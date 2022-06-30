@@ -1,0 +1,43 @@
+{
+  "name": "web-pack-starter",
+  "version": "3.0.0",
+  "description": "configuracion inicial de webpack v5 para un proyecto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:prod": "webpack --config webpack.prod.js",
+    "start": "webpack serve --open --config webpack.dev.js "
+  },
+  "author": "Arturo Morales",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.5.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "html-loader": "^3.1.2",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.3",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "bootstrap": "^5.1.3",
+    "core-js": "^3.23.3",
+    "debug": "^4.3.4",
+    "lodash": "^4.17.21",
+    "sweetalert2": "^11.4.19"
+  }
+}
