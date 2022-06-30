@@ -32,7 +32,7 @@ class Combos extends Connection{
         
         $alumnos = $getAlumnos->fetchAll(PDO::FETCH_ASSOC);
         //print_r( $alumnos );
-        return json_encode($alumnos);
+        return $alumnos;
         
     }
 
@@ -44,7 +44,7 @@ class Combos extends Connection{
         $getEstado->execute();
 
         $estadoCivil = $getEstado->fetchAll(PDO::FETCH_ASSOC);
-        return json_encode( $estadoCivil);
+        return $estadoCivil;
 
     }
 
@@ -56,7 +56,7 @@ class Combos extends Connection{
         $getNivel->execute();
 
         $nivelEstudios = $getNivel->fetchAll(PDO::FETCH_ASSOC);
-        return json_encode( $nivelEstudios);
+        return $nivelEstudios;
 
     }
 
