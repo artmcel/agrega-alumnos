@@ -1,7 +1,14 @@
 /**
  * logica del proyecto
  */
-const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/peticiones");
+const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/peticiones"),
+      selectCarreras = document.getElementById( 'carreras' ),
+      selectEstado = document.getElementById( 'estado-civil' ),
+      selectNivel = document.getElementById( 'nivel' ),
+      nombre = document.getElementById( 'nombre' );
+
+
+let datos = {};
 
 /**
  * functin to load combos...
@@ -18,7 +25,6 @@ window.addEventListener( 'load', ()=>{
 
 
 const $getCarreras = async()=>{
-    const selectCarreras = document.getElementById( 'carreras' );
     
     loadModule.then( module => {
     
@@ -35,8 +41,6 @@ const $getCarreras = async()=>{
 
 const $getEstadoCivil =  async()=>{
 
-    const selectEstado = document.getElementById( 'estado-civil' );
-
     loadModule.then( module => {
         
         const estadoCivil = module.estadoCivil();
@@ -51,14 +55,12 @@ const $getEstadoCivil =  async()=>{
 
 const $getNivel =  async()=>{
 
-    const selectNivel = document.getElementById( 'nivel' );
-
     loadModule.then( module => {
         
         const nivel = module.nivel();
 
-        nivel.then( edo => {
-            edo.forEach( ({nivel_id, nivel_descrip}) => {
+        nivel.then( ni => {
+            ni.forEach( ({nivel_id, nivel_descrip}) => {
                 selectNivel.insertAdjacentHTML('beforeend', ` <option value="${nivel_id}">${nivel_descrip}</option>`);
             });
         })
@@ -66,3 +68,28 @@ const $getNivel =  async()=>{
 
 
 };
+
+
+const sendData = () =>{
+
+    const boton = document.getElementById( 'boton' );
+    
+    
+    boton.addEventListener( 'click', (event)=>{
+
+        event.preventDefault();
+
+        const nom = nombre.value,
+              car = selectCarreras.value,
+              civil = selectEstado.value,
+              niv = selectNivel.value; 
+        
+        datos = {... datos, nom, car, civil, niv};
+
+        event.preventDefault();
+
+    })
+
+}
+
+sendData();
