@@ -5,7 +5,8 @@ const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/p
       selectCarreras = document.getElementById( 'carreras' ),
       selectEstado = document.getElementById( 'estado-civil' ),
       selectNivel = document.getElementById( 'nivel' ),
-      nombre = document.getElementById( 'nombre' );
+      nombre = document.getElementById( 'nombre' ),
+      boton = document.getElementById( 'boton' );
 
 
 let datos = {};
@@ -69,27 +70,37 @@ const $getNivel =  async()=>{
 
 };
 
+boton.addEventListener( 'click', (event)=>{
 
-const sendData = () =>{
+    event.preventDefault();
 
-    const boton = document.getElementById( 'boton' );
+    const nom = nombre.value,
+          car = selectCarreras.value,
+          civil = selectEstado.value,
+          niv = selectNivel.value; 
     
+    datos = {... datos, nom, car, civil, niv};
+
+    guardaAlumno( datos );
     
-    boton.addEventListener( 'click', (event)=>{
+    event.preventDefault();
+    
+});
 
-        event.preventDefault();
 
-        const nom = nombre.value,
-              car = selectCarreras.value,
-              civil = selectEstado.value,
-              niv = selectNivel.value; 
+const guardaAlumno = async( datosAlumno )=>{
+    
+    await loadModule.then( module => {
         
-        datos = {... datos, nom, car, civil, niv};
+        const guardar = module.saveData( datosAlumno );
+        guardar.then( guarda => {
 
-        event.preventDefault();
+            console.log( guarda );
 
-    })
+        });
 
-}
 
-sendData();
+    });
+
+
+};
