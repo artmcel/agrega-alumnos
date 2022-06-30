@@ -10,6 +10,8 @@ const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/p
 window.addEventListener( 'load', ()=>{
 
     $getCarreras();
+    $getEstadoCivil();
+    $getNivel();
 
     
 });
