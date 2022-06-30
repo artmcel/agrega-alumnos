@@ -21,7 +21,7 @@ abstract class Connection{
 
 }
 
-class Combos extends Connection{
+class Inscripcion extends Connection{
 
     public function getCarreras(){
         
@@ -60,7 +60,7 @@ class Combos extends Connection{
 
     }
 
-
+    
 }
 
 
