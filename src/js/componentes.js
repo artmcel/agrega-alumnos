@@ -46,3 +46,21 @@ const $getEstadoCivil =  async()=>{
         })
     });
 };
+
+const $getNivel =  async()=>{
+
+    const selectNivel = document.getElementById( 'nivel' );
+
+    loadModule.then( module => {
+        
+        const nivel = module.nivel();
+
+        nivel.then( edo => {
+            edo.forEach( ({nivel_id, nivel_descrip}) => {
+                selectNivel.insertAdjacentHTML('beforeend', ` <option value="${nivel_id}">${nivel_descrip}</option>`);
+            });
+        })
+    });
+
+
+};
