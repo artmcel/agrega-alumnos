@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscripcion alumnos</title>
 </head>
+
 <body>
 
     <main class="container">
         <form id="formulario">
             <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" aria-describedby="nombre">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" aria-describedby="nombre">
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="carreras" id="carreras">
+                    <option value="0" selected>Selecciona Carrera</option>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="estado-civil" id="estado-civil">
+                    <option value="0" selected>Estado Civil</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="nivel-estudios" id="nivel">
+                    <option value="0" selected>Nivel Estudios</option>
+
+                </select>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
-          </form>
+        </form>
     </main>
-    
+
 </body>
+
 </html>
