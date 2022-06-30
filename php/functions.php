@@ -22,7 +22,7 @@ $getEstadoCivil = function(){
 
     $query = new Combos();
     $estadoCivil = $query->getEstadoC();
-    return $estadoCivil;
+    echo json_encode($estadoCivil);
 
 };
 
@@ -30,7 +30,7 @@ $getNivel = function(){
 
     $query = new Combos();
     $nivelEstudios = $query->getNivel();
-    return $nivelEstudios;
+    echo json_encode($nivelEstudios);
 
 };
 
