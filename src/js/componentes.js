@@ -82,8 +82,7 @@ boton.addEventListener( 'click', (event)=>{
     datos = {... datos, nom, car, civil, niv};
 
     guardaAlumno( datos );
-    
-    event.preventDefault();
+
     
 });
 
