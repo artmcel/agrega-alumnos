@@ -2,7 +2,7 @@
  * archivo para peticiones fetch...
  */
 
-const url = `http://192.168.1.123/examen/php/functions`;
+const url = 'http://192.168.1.123/examen/php/functions.php';
 
 /**
  * call carreras
@@ -33,10 +33,28 @@ const nivel = async()=>{
     return datos;
 };
 
+const saveData = async( alumno )=>{
+
+    const resp = await fetch(`${url}?req=ia`, {
+
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body : JSON.stringify(alumno)
+    });
+
+    const datos = await resp.json();
+    return datos;
+    
+};
+
 
 export{
     carreras,
     estadoCivil,
-    nivel
+    nivel,
+    saveData
 }
 
