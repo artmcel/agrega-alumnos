@@ -1,5 +1,11 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+header('Content-Type: application/json');
+
+$req = $_GET['req'];
 
 require("./req.php");
 
@@ -8,7 +14,7 @@ $getCarreras = function(){
 
     $query = new Combos();
     $carreras = $query->getCarreras();
-    return $carreras;
+    echo json_encode($carreras);
 
 };
 
@@ -27,6 +33,11 @@ $getNivel = function(){
     return $nivelEstudios;
 
 };
+
+if( $req == 'ca') $getCarreras();
+if( $req == 'ec') $getEstadoCivil();
+if( $req == 'ne') $getNivel();
+
 
 
 ?>
