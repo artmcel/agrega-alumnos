@@ -2,15 +2,31 @@
 
 
 require("./req.php");
-$query = new Combos();
-$carreras = $query->getCarreras();
-$estadoCivil = $query->getEstadoC();
-$nivelEstudios = $query->getNivel();
-echo $carreras;
-echo "<br>";
-echo $estadoCivil;
-echo "<br>";
-echo $nivelEstudios;
+
+
+$getCarreras = function(){
+
+    $query = new Combos();
+    $carreras = $query->getCarreras();
+    return $carreras;
+
+};
+
+$getEstadoCivil = function(){
+
+    $query = new Combos();
+    $estadoCivil = $query->getEstadoC();
+    return $estadoCivil;
+
+};
+
+$getNivel = function(){
+
+    $query = new Combos();
+    $nivelEstudios = $query->getNivel();
+    return $nivelEstudios;
+
+};
 
 
 ?>
