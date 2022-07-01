@@ -139,3 +139,14 @@ const $getId = async()=>{
     });
 
 };
+
+
+const $getAlumnos =  async()=>{
+
+    loadModule.then( module => {
+        const allAlumnos = module.getAlumnos();
+
+        allAlumnos.then( console.log );
+    });
+
+};
