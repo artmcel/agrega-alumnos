@@ -50,11 +50,22 @@ const saveData = async( alumno )=>{
     
 };
 
+const getId = async()=>{
+
+    const resp = await fetch(`${url}?req=id`);
+    const datos = resp.json();
+    return datos;
+
+
+
+};
+
 
 export{
     carreras,
     estadoCivil,
     nivel,
-    saveData
+    saveData,
+    getId
 }
 
