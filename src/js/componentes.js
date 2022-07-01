@@ -7,7 +7,8 @@ const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/p
       selectNivel = document.getElementById( 'nivel' ),
       nombre = document.getElementById( 'nombre' ),
       boton = document.getElementById( 'boton' ),
-      inputId =  document.getElementById( 'id' );
+      inputId =  document.getElementById( 'id' ),
+      tableAlumnos =  document.getElementById( 'table-alumnos');
 
 
 let datos = {};
@@ -22,6 +23,7 @@ window.addEventListener( 'load', ()=>{
     $getEstadoCivil();
     $getNivel();
     $getId();
+    $getAlumnos();
 
     
 });
@@ -89,13 +91,13 @@ boton.addEventListener( 'click', (event)=>{
     datos = {... datos, getId, nom, idCar, idCivil, idNivel};
     //datos = { ...datos, getId, nom, car, civil, niv};
 
-    guardaAlumno( datos );
+    $guardaAlumno( datos );
 
     
 });
 
 
-const guardaAlumno = async( datosAlumno )=>{
+const $guardaAlumno = async( datosAlumno )=>{
     
     await loadModule.then( module => {
         
@@ -144,9 +146,28 @@ const $getId = async()=>{
 const $getAlumnos =  async()=>{
 
     loadModule.then( module => {
-        const allAlumnos = module.getAlumnos();
+        const allAlumnos = module.getAllAlumnos();
 
-        allAlumnos.then( console.log );
+        allAlumnos.then( alumnos =>{
+
+            alumnos.forEach( ({alumno_id, apellido_paterno, apellido_materno, nombre, fecha_nacimiento}) => {
+
+                let table =  `
+                    <tr id="table-alumnos" class="text-center">
+                        <td>${alumno_id}</td>
+                        <td>${nombre} ${apellido_paterno} ${apellido_materno}</td>
+                        <td>${fecha_nacimiento}</td>
+                        <td class="row">
+                            <button class="col btn btn-danger m-1">Eliminar</button>
+                            <button class="col btn btn-info m-1">Agregar Grupo</button>
+                        </td>
+                    </tr>`;
+                
+                tableAlumnos.insertAdjacentHTML( 'beforeend',  table);
+
+            });
+
+        });
     });
 
 };
