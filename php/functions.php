@@ -53,6 +53,15 @@ $lastId =  function(){
     echo json_encode($getId);
 };
 
+$getAlumnos = function(){
+
+    require("./req.php");
+    $query = new Inscripcion();
+    $getAllAlumnos = $query->getAlumnos();
+
+    echo json_encode($getAllAlumnos);
+};
+
 if( $req == 'ca'){
     
     $getCarreras();
@@ -86,6 +95,10 @@ if( $req == 'ia' && ( ($method == 'OPTIONS') || ($method == 'POST')) ) {
 
 if( $req == 'id'){
     $lastId();
+}
+
+if( $req = 'gal'){
+    $getAlumnos();
 }
 
 
