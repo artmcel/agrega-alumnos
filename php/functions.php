@@ -40,7 +40,7 @@ $saveAlumno = function( $args = array() ){
     require("./req.php");
     $query = new Inscripcion();
     $guardaAlumno = $query->saveAlumno($args);
-    return $guardaAlumno;
+    echo json_encode($guardaAlumno);
     //return $guardaAlumno;
     
 };
@@ -73,6 +73,7 @@ if( $req == 'ia' && ( ($method == 'OPTIONS') || ($method == 'POST')) ) {
     //print_r( $datos );
 
     $args = array(
+        "idAlumno" => $datos['getId'],
         "nombre" => $datos['nom'],
         "carrera" => $datos['idCar'],
         "edocivil" => $datos['idCivil'],
