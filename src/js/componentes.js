@@ -79,14 +79,15 @@ boton.addEventListener( 'click', (event)=>{
     const nom = nombre.value,
           car = selectCarreras.value,
           civil = selectEstado.value,
-          niv = selectNivel.value;
-    const idCar = parseInt( car ),
-        idCivil = parseInt( civil ),
-        idNivel =parseInt(niv);
+          niv = selectNivel.value,
+          getId = inputId.value;
 
-    
-    //datos = {... datos, nom, idCar, idCivil, idNivel};
-    datos = { ...datos, nom, car, civil, niv};
+          const idCar = parseInt( car ),
+          idCivil = parseInt( civil ),
+          idNivel =parseInt(niv);
+
+    datos = {... datos, getId, nom, idCar, idCivil, idNivel};
+    //datos = { ...datos, getId, nom, car, civil, niv};
 
     guardaAlumno( datos );
 
@@ -104,10 +105,11 @@ const guardaAlumno = async( datosAlumno )=>{
             if(guarda.result === true ){
 
                 alert('registro exitoso');
-            }
+            }else {
 
-            alert(' fallo registro')
-            window.location.href = "./";
+                alert(' fallo registro')
+                window.location.href = "./";
+            }
 
         });
 
