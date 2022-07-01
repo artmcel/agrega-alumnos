@@ -77,7 +77,7 @@ class Inscripcion extends Connection{
     public function saveAlumno( $args = array() ){
         //return print_r( $args);
 
-        $idAlumno = 4;
+        $idAlumno = $args['idAlumno'];
         $nombre = $args['nombre'];
         $idCarrera = $args['carrera'];
         $idEstado = $args['edocivil'];
@@ -93,9 +93,9 @@ class Inscripcion extends Connection{
         $ex =  $pre->execute( [$idAlumno, $nombre, $idCarrera, $idEstado, $idNivel] );
 
         if($ex){
-            return json_encode(["result" => true]);
+            return ["result" => true];
         }else {
-            return json_encode(["result" => false]);
+            return ["result" => false];
         }
 
         //if( !$args ) throw 'argumentos vacios';
