@@ -77,7 +77,7 @@ class Inscripcion extends Connection{
     public function saveAlumno( $args = array() ){
         //return print_r( $args);
 
-        $idAlumno = 2;
+        $idAlumno = 4;
         $nombre = $args['nombre'];
         $idCarrera = $args['carrera'];
         $idEstado = $args['edocivil'];
@@ -101,6 +101,16 @@ class Inscripcion extends Connection{
         //if( !$args ) throw 'argumentos vacios';
 
 
+    }
+
+    public function ultimoId (){
+
+        $query = "SELECT TOP 1 * FROM Alumnos ORDER BY alumno_id DESC";
+        $getId = $this->conn->prepare( $query );
+        $getId->execute();
+
+        $lastId = $getId->fetchAll(PDO::FETCH_ASSOC);
+        return $lastId;
     }
 
     
