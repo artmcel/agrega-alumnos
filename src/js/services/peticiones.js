@@ -56,8 +56,13 @@ const getId = async()=>{
     const datos = resp.json();
     return datos;
 
+};
 
+const getAllAlumnos = async()=>{
 
+    const resp = await fetch( `${url}?req=gal`);
+    const datos = resp.json();
+    return datos;
 };
 
 
@@ -66,6 +71,7 @@ export{
     estadoCivil,
     nivel,
     saveData,
-    getId
+    getId,
+    getAllAlumnos
 }
 
