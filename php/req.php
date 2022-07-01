@@ -103,7 +103,7 @@ class Inscripcion extends Connection{
 
     }
 
-    public function ultimoId (){
+    public function ultimoId(){
 
         $query = "SELECT TOP 1 * FROM Alumnos ORDER BY alumno_id DESC";
         $getId = $this->conn->prepare( $query );
@@ -111,6 +111,17 @@ class Inscripcion extends Connection{
 
         $lastId = $getId->fetchAll(PDO::FETCH_ASSOC);
         return $lastId;
+    }
+
+    public function getAlumnos(){
+
+        $query = "SELECT * FROM Alumnos";
+        $getAlum = $this->conn->prepare( $query );
+        $getAlum->execute();
+
+        $alumnos = $getAlum->fetchAll(PDO::FETCH_ASSOC);
+        return $alumnos;
+
     }
 
     
