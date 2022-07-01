@@ -2,6 +2,20 @@
 /* work
 */
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+header('Content-Type: application/json');
+
+$method = $_SERVER['REQUEST_METHOD'];
+
+if ($method == "OPTIONS") {
+    header('Access-Control-Allow-Origin: *');
+    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+    header("HTTP/1.1 200 OK");
+    die();
+}
+
 abstract class Connection{
 
     public $conn;
@@ -57,6 +71,35 @@ class Inscripcion extends Connection{
 
         $nivelEstudios = $getNivel->fetchAll(PDO::FETCH_ASSOC);
         return $nivelEstudios;
+
+    }
+
+    public function saveAlumno( $args = array() ){
+        //return print_r( $args);
+
+        $idAlumno = 2;
+        $nombre = $args['nombre'];
+        $idCarrera = $args['carrera'];
+        $idEstado = $args['edocivil'];
+        $idNivel = $args['nivel'];
+
+        $this->conn = parent::__construct();
+
+        $query = "INSERT INTO Alumnos.dbo.Alumnos (alumno_id, nombre, carrera_id, edocivil_id, nivel_id) VALUES (?, ?, ?, ?, ?)";
+
+        //$this->conn->prepare( $query )->execute( [ $args['nombre'], $args['carrera'], $args['edocivil'], $args['nivel'] ] );
+        $params = array($nombre, $idCarrera, $idEstado, $idNivel);
+        $pre = $this->conn->prepare( $query );
+        $ex =  $pre->execute( [$idAlumno, $nombre, $idCarrera, $idEstado, $idNivel] );
+
+        if($ex){
+            return json_encode(["result" => true]);
+        }else {
+            return json_encode(["result" => false]);
+        }
+
+        //if( !$args ) throw 'argumentos vacios';
+
 
     }
 
