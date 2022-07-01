@@ -6,7 +6,8 @@ const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/p
       selectEstado = document.getElementById( 'estado-civil' ),
       selectNivel = document.getElementById( 'nivel' ),
       nombre = document.getElementById( 'nombre' ),
-      boton = document.getElementById( 'boton' );
+      boton = document.getElementById( 'boton' ),
+      inputId =  document.getElementById( 'id' );
 
 
 let datos = {};
@@ -20,6 +21,7 @@ window.addEventListener( 'load', ()=>{
     $getCarreras();
     $getEstadoCivil();
     $getNivel();
+    $getId();
 
     
 });
@@ -77,9 +79,14 @@ boton.addEventListener( 'click', (event)=>{
     const nom = nombre.value,
           car = selectCarreras.value,
           civil = selectEstado.value,
-          niv = selectNivel.value; 
+          niv = selectNivel.value;
+    const idCar = parseInt( car ),
+        idCivil = parseInt( civil ),
+        idNivel =parseInt(niv);
+
     
-    datos = {... datos, nom, car, civil, niv};
+    //datos = {... datos, nom, idCar, idCivil, idNivel};
+    datos = { ...datos, nom, car, civil, niv};
 
     guardaAlumno( datos );
 
@@ -94,12 +101,39 @@ const guardaAlumno = async( datosAlumno )=>{
         const guardar = module.saveData( datosAlumno );
         guardar.then( guarda => {
 
-            console.log( guarda );
+            if(guarda.result === true ){
+
+                alert('registro exitoso');
+            }
+
+            alert(' fallo registro')
+            window.location.href = "./";
 
         });
 
 
     });
 
+
+};
+
+const $getId = async()=>{
+
+    loadModule.then( module => {
+
+        const id = module.getId();
+        id.then( data => {
+
+            data.forEach( ({alumno_id}) => {
+
+                let setId = alumno_id;
+                parseInt(setId);
+                setId++;
+                inputId.setAttribute('value', `${setId}`);
+            })
+
+
+        });
+    });
 
 };
