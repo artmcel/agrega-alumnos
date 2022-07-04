@@ -5,7 +5,8 @@ import '@popperjs/core';
 const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/peticiones"),
       tableAlumnos =  document.getElementById( 'table-alumnos'),
       selectGrupo = document.getElementById('grupo'),
-      inputId = document.getElementById('idAlumno');
+      inputId = document.getElementById('idAlumno'),
+      botonAgregar = document.getElementById('agregar');
 
 let btnEliminar = '';
 
@@ -102,3 +103,4 @@ const $getGrupos = async()=>{
 };
 
 $getGrupos();
+
