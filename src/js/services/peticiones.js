@@ -79,6 +79,14 @@ const deleteAlumno = async( idAlumno )=>{
     return datos;
 };
 
+const getGrupos = async()=>{
+
+    const resp = await fetch( `${url}?req=ggr`);
+    const datos = await resp.json();
+    return datos;
+
+};
+
 
 export{
     carreras,
@@ -87,6 +95,7 @@ export{
     saveData,
     getId,
     getAllAlumnos,
-    deleteAlumno
+    deleteAlumno,
+    getGrupos
 }
 
