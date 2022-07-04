@@ -62,6 +62,15 @@ $getAlumnos = function(){
     echo json_encode($getAllAlumnos);
 };
 
+$deleteAlumno = function( $idAlumno ){
+
+    require("./req.php");
+    $query = new Inscripcion();
+    $deleteAlumno = $query->deleteAlumno( $idAlumno );
+    echo json_encode($deleteAlumno);
+
+};
+
 if( $req == 'ca'){
     
     $getCarreras();
@@ -97,8 +106,12 @@ if( $req == 'id'){
     $lastId();
 }
 
-if( $req = 'gal'){
+if( $req == 'gal'){
     $getAlumnos();
+}
+
+if( $req == 'dal'){
+    $deleteAlumno();
 }
 
 
