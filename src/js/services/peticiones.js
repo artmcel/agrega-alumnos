@@ -87,6 +87,22 @@ const getGrupos = async()=>{
 
 };
 
+const addGrupo = async( grupoAsignado )=>{
+    const resp = await fetch(`${url}?req=addga`, {
+
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body : JSON.stringify( grupoAsignado )
+    });
+
+    const datos = await resp.json();
+    return datos;
+
+};
+
 
 export{
     carreras,
@@ -96,6 +112,7 @@ export{
     getId,
     getAllAlumnos,
     deleteAlumno,
-    getGrupos
+    getGrupos,
+    addGrupo
 }
 
