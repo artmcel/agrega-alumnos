@@ -9,11 +9,21 @@ const HtmlWebPackPlugin       = require('html-webpack-plugin');
  */
 
 const plugins = [
-    new HtmlWebPackPlugin({
-        template: './src/index.html',
-        filename: './index.html',
-        chunks : ['index']
-    })
+    new HtmlWebPackPlugin(
+        {
+            template: './src/index.html',
+            filename: './index.html',
+            chunks : ['index']
+        },
+    
+    ),
+    new HtmlWebPackPlugin(
+        {
+            template: './src/listado.html',
+            filename: './listado.html',
+            chunks : ['listado']
+        }
+    )
 ];
 
 /*
@@ -29,6 +39,7 @@ module.exports = {
     entry : {
 
         index: './src/index.js',
+        listado: './src/js/listado.js' 
 
     },
     module: {
