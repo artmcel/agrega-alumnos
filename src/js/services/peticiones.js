@@ -65,9 +65,16 @@ const getAllAlumnos = async()=>{
     return datos;
 };
 
-const deleteAlumno = async()=>{
+const deleteAlumno = async( idAlumno )=>{
 
-    const resp = await fetch( `${url}?req=dal`);
+    const resp = await fetch( `${url}?req=dal`, {
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body : idAlumno
+    });
     const datos = resp.json();
     return datos;
 };
