@@ -71,6 +71,15 @@ $deleteAlumno = function( $idAlumno ){
 
 };
 
+$getGrupos = function(){
+
+    require("./req.php");
+    $query = new Inscripcion();
+    $grupos = $query->getGrupos();
+    echo json_encode($grupos);
+    
+};
+
 if( $req == 'ca'){
     
     $getCarreras();
@@ -117,6 +126,10 @@ if( $req == 'dal' && ( ($method == 'OPTIONS') || ($method == 'POST')) ){
     $id=$datos[0];
 
     $deleteAlumno($id);
+}
+
+if( $req == 'ggr'){
+    $getGrupos();
 }
 
 
