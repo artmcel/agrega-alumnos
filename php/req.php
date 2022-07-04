@@ -128,11 +128,15 @@ class Inscripcion extends Connection{
 
         $query = "DELETE FROM Alumnos WHERE Alumno_id = ? ";
         $deleteAlumno = $this->conn->prepare( $query );
-        $deleteAlumno->execute([$idAlumno]);
+        $delete =  $deleteAlumno->execute([$idAlumno]);
 
-        ( $deleteAlumno ) ? ["result" => true ] : ["result" => false];
-
+        if( $delete ){
+            return ["result" => true ];
+        }else {
+            return ["result" => false];
+        } 
     }
+
 
     
 }
