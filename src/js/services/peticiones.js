@@ -65,6 +65,13 @@ const getAllAlumnos = async()=>{
     return datos;
 };
 
+const deleteAlumno = async()=>{
+
+    const resp = await fetch( `${url}?req=dal`);
+    const datos = resp.json();
+    return datos;
+};
+
 
 export{
     carreras,
@@ -72,6 +79,7 @@ export{
     nivel,
     saveData,
     getId,
-    getAllAlumnos
+    getAllAlumnos,
+    deleteAlumno
 }
 
