@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Listado Alumnos</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listado Alumnos</title>
 </head>
+
 <body>
 
-    <main class="container">
-        <section id="tablaAlumnos">
-            <div class="p-2">
-                <h2>Listado Alumnos</h2>
+  <main class="container">
+    <section id="tablaAlumnos">
+      <div class="row p-3">
+        <h2 class="flex col">Listado Alumnos</h2>
+        <a class="flex col text-end" href="./">
+          <button class="btn btn-success">Inscribir Alumnos</button>
+        </a>
+      </div>
+
+      <table class="table">
+        <thead class="table-dark text-center">
+          <tr>
+            <th>Id Alumno</th>
+            <th>Nombre Completo</th>
+            <th>Fecha de nacimiento</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="table-alumnos">
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="modal fade" id="agregaGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Agrega el grupo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <table class="table">
-                <thead class="table-dark text-center">
-                    <tr>
-                        <th>Id Alumno</th>
-                        <th>Nombre Completo</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="table-alumnos">
-                </tbody>
-              </table>
-        </section>
-
-        <section>
-            <div class="modal fade" id="agregaGrupo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">Agrega el grupo</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <form id="asigna-grupo">
-                        <div class="mb-3">
-                          <label for="nombre" class="form-label">Id Alumno</label>
-                          <input type="text" class="form-control" id="idAlumno" aria-describedby="idAlumno" disabled>
-                      </div>
-                      <label for="id" class="form-label">Datos escolares</label>
-                      <div class="mb-3">
-                          <select class="form-select" aria-label="grupo" id="grupo">
-                              <option value="0" selected>Selecciona un grupo</option>
-                          </select>
-                      </div>
-                      </form>
-
-                    </div>
-                    <div class="modal-footer">
-                      <button id="agregar" type="button" class="btn btn-primary">Agregar grupo</button>
-                    </div>
-                  </div>
+            <div class="modal-body">
+              <form id="asigna-grupo">
+                <div class="mb-3">
+                  <label for="nombre" class="form-label">Id Alumno</label>
+                  <input type="text" class="form-control" id="idAlumno" aria-describedby="idAlumno" disabled>
                 </div>
-              </div>
-        </section>
-    </main>
-    
+                <label for="id" class="form-label">Datos escolares</label>
+                <div class="mb-3">
+                  <select class="form-select" aria-label="grupo" id="grupo">
+                    <option value="0" selected>Selecciona un grupo</option>
+                  </select>
+                </div>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button id="agregar" type="button" class="btn btn-primary">Agregar grupo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
 </body>
+
 </html>
