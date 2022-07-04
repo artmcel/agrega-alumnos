@@ -147,8 +147,24 @@ class Inscripcion extends Connection{
         return $grupos;
     }
 
+    public function addGrupoAlumno( $args = array() ){
 
-    
+        $idGrupo = $args['idGrupo'];
+        $idAlumno = $args['idAlumno'];
+
+        //return [ $idGrupo ];
+
+        $query = "INSERT INTO Alumnos.dbo.listas (grupo_id, alumno_id) VALUES (?, ?)";
+        $insertListas = $this->conn->prepare( $query );
+        $exe =  $insertListas->execute( [$idGrupo, $idAlumno]);
+
+        if($exe){
+            return ["result" => true];
+        }else {
+            return ["result" => false];
+        }
+
+    }
 }
 
 
