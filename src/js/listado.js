@@ -104,3 +104,32 @@ const $getGrupos = async()=>{
 
 $getGrupos();
 
+botonAgregar.addEventListener('click', ()=>{
+
+    let grupo = {},
+        idGr = selectGrupo.value,
+        idAl = inputId.value,
+        idGrupo = parseInt(idGr),
+        idAlumno = parseInt(idAl),
+        guardaGrupo = {...grupo, idGrupo, idAlumno};
+
+        //console.log( guardaGrupo);
+
+    loadModule.then( module=> {
+
+        const agregaGrupo = module.addGrupo( guardaGrupo ) ;
+
+        agregaGrupo.then( grupo =>{
+
+            //console.log( grupo );
+            if( grupo.result === true){
+                alert( 'grupo añadido correctamente');
+            }else{
+                alert('hubo un error');
+            }
+
+        });
+    });
+
+});
+
