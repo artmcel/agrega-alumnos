@@ -110,8 +110,13 @@ if( $req == 'gal'){
     $getAlumnos();
 }
 
-if( $req == 'dal'){
-    $deleteAlumno();
+if( $req == 'dal' && ( ($method == 'OPTIONS') || ($method == 'POST')) ){
+    $recibeJson = json_decode(file_get_contents('php://input'), false);
+    $datos = (array)$recibeJson;
+
+    $id=$datos[0];
+
+    $deleteAlumno($id);
 }
 
 
