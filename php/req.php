@@ -124,6 +124,16 @@ class Inscripcion extends Connection{
 
     }
 
+    public function deleteAlumno( $idAlumno ){
+
+        $query = "DELETE FROM Alumnos WHERE Alumno_id = ? ";
+        $deleteAlumno = $this->conn->prepare( $query );
+        $deleteAlumno->execute([$idAlumno]);
+
+        ( $deleteAlumno ) ? ["result" => true ] : ["result" => false];
+
+    }
+
     
 }
 
