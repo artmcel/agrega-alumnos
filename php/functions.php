@@ -80,6 +80,20 @@ $getGrupos = function(){
     
 };
 
+$addGrupoAlumno = function( $args = array() ){
+
+    
+    require("./req.php");
+    $query = new Inscripcion();
+    $guardaGrupo = $query->addGrupoAlumno( $args );
+    echo json_encode($guardaGrupo);
+    
+    //print_r($args);
+    
+
+
+};
+
 if( $req == 'ca'){
     
     $getCarreras();
@@ -130,6 +144,21 @@ if( $req == 'dal' && ( ($method == 'OPTIONS') || ($method == 'POST')) ){
 
 if( $req == 'ggr'){
     $getGrupos();
+}
+
+if( $req == 'addga' && ( ($method == 'OPTIONS') || ($method == 'POST'))){
+
+    $recibeJson = json_decode(file_get_contents('php://input'), false);
+    $datos = (array)$recibeJson;
+
+    $args = array(
+        "idGrupo" => $datos['idGrupo'],
+        "idAlumno" => $datos['idAlumno']
+    );
+
+
+    //print_r( $args );
+    $addGrupoAlumno($args);
 }
 
 
