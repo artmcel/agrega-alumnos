@@ -3,7 +3,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@popperjs/core';
 
 const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/peticiones"),
-      tableAlumnos =  document.getElementById( 'table-alumnos');
+      tableAlumnos =  document.getElementById( 'table-alumnos'),
+      selectGrupo = document.getElementById('grupo'),
+      inputId = document.getElementById('idAlumno');
 
 let btnEliminar = '';
 
@@ -23,7 +25,7 @@ const $getAlumnos =  (async()=>{
                         <td>${fecha_nacimiento}</td>
                         <td class="row">
                             <button id="eliminarAlumno" class="col btn btn-danger m-1" value="${alumno_id}">Eliminar</button>
-                            <button class="col btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#agregaGrupo">Agregar Grupo</button>
+                            <button id="agregaGrupoAlumno" class="col btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#agregaGrupo" value="${alumno_id}">Agregar Grupo</button>
                         </td>
                     </tr>`;
                 
@@ -68,6 +70,35 @@ const $deleteAlumno =  async( idAlumno )=>{
         });
     });
 
-
 };
 
+const $getGrupos = async()=>{
+
+    loadModule.then( module =>{
+        
+        const grupos = module.getGrupos();
+        grupos.then( grupo => {
+
+            grupo.forEach( ({grupo_id, grupo_descripcion}) => {
+
+                selectGrupo.insertAdjacentHTML('beforeend', `<option value="${grupo_id}">${grupo_descripcion}</option>`)
+
+            });
+
+        }).then( ()=>{
+            let botonAgregraGrupo = document.querySelectorAll('#agregaGrupoAlumno');
+
+            botonAgregraGrupo.forEach( boton =>{
+
+                boton.addEventListener( 'click', ()=>{
+                    //console.log(boton.value);
+                    inputId.setAttribute('value', boton.value);
+                })
+
+            });
+        });
+
+    });
+};
+
+$getGrupos();
