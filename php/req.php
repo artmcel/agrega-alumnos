@@ -137,6 +137,16 @@ class Inscripcion extends Connection{
         } 
     }
 
+    public function getGrupos(){
+
+        $query = "SELECT * FROM grupos";
+        $getGrupos = $this->conn->prepare( $query );
+        $getGrupos->execute();
+
+        $grupos = $getGrupos->fetchAll(PDO::FETCH_ASSOC);
+        return $grupos;
+    }
+
 
     
 }
