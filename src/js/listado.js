@@ -23,7 +23,7 @@ const $getAlumnos =  (async()=>{
                         <td>${fecha_nacimiento}</td>
                         <td class="row">
                             <button id="eliminarAlumno" class="col btn btn-danger m-1" value="${alumno_id}">Eliminar</button>
-                            <button class="col btn btn-info m-1">Agregar Grupo</button>
+                            <button class="col btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#agregaGrupo">Agregar Grupo</button>
                         </td>
                     </tr>`;
                 
