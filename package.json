@@ -1,7 +1,7 @@
 {
-  "name": "web-pack-starter",
-  "version": "3.0.0",
-  "description": "configuracion inicial de webpack v5 para un proyecto",
+  "name": "examen-dev-jr",
+  "version": "6.1.0",
+  "description": "examen de vacante dev jr",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
