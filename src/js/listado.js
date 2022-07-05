@@ -2,15 +2,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@popperjs/core';
 
-const loadModule     = import( /*webpackChunkName: "peticiones" */ "./services/peticiones"),
+const loadModule   = import( /*webpackChunkName: "peticiones" */ "./services/peticiones"),
       tableAlumnos =  document.getElementById( 'table-alumnos'),
-      selectGrupo = document.getElementById('grupo'),
-      inputId = document.getElementById('idAlumno'),
+      selectGrupo  = document.getElementById('grupo'),
+      inputId      = document.getElementById('idAlumno'),
       botonAgregar = document.getElementById('agregar');
 
 let btnEliminar = '';
 
-const $getAlumnos =  (async()=>{
+
+const $getAlumnos = async()=>{
 
     loadModule.then( module => {
         const allAlumnos = module.getAllAlumnos();
@@ -51,7 +52,8 @@ const $getAlumnos =  (async()=>{
         });
     });
 
-})();
+};
+window.addEventListener('load', $getAlumnos());
 
 
 const $deleteAlumno =  async( idAlumno )=>{
