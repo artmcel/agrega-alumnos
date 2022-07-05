@@ -165,6 +165,11 @@ class Inscripcion extends Connection{
         }
 
     }
+
+    /**
+     * query to get grupo segun el id del alumno
+     * Select grupo_descripcion, nombre from Alumnos.dbo.Alumnos, Alumnos.dbo.listas, Alumnos.dbo.grupos where listas.grupo_id = grupos.grupo_id  and listas.alumno_id = Alumnos.alumno_id;
+     */
 }
 
 
