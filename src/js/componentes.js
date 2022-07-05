@@ -104,10 +104,11 @@ const $guardaAlumno = async( datosAlumno )=>{
             if(guarda.result === true ){
 
                 alert('registro exitoso');
+                window.reload();
             }else {
 
                 alert(' fallo registro')
-                window.location.href = "./";
+                window.reload();
             }
 
         });
